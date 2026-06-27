@@ -9,7 +9,7 @@
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "vite build",
     "db:tool": "node tools/db-tool.cjs",
-    "start:local": "npm run build && node server/server.js",
+    "start:local": "npm run build && set PORT=80&& set PUBLIC_BASE_URL=http://localhost&& set FRONTEND_BASE_URL=http://localhost&& node server/server.js",
     "preview": "vite preview"
   },
   "dependencies": {
