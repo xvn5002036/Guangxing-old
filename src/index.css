@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global Scroll ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Writing Modes ─────────────────────────────────── */
+.vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* ── Talisman Background ───────────────────────────── */
+.talisman-bg {
+  background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 35%),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.04), transparent 40%),
+    radial-gradient(circle at 45% 85%, rgba(255, 255, 255, 0.03), transparent 35%);
+}
+
+.wood-grain {
+  filter: url(#wood-filter);
+}
+
+/* ── Gold Gradient Text ────────────────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E8C97A 0%, #C5A059 50%, #A88040 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold Glow Shadow ──────────────────────────────── */
+.shadow-gold {
+  box-shadow: 0 0 30px rgba(197, 160, 89, 0.15), 0 4px 20px rgba(0,0,0,0.4);
+}
+.shadow-gold-hover:hover {
+  box-shadow: 0 0 40px rgba(197, 160, 89, 0.30), 0 8px 30px rgba(0,0,0,0.5);
+}
+
+/* ── Section alternating backgrounds ──────────────── */
+.section-dark  { background-color: #080808; }
+.section-ink   { background-color: #0D1117; }
+.section-surface { background-color: #1C1C22; }
+
+/* ── Decorative divider ────────────────────────────── */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,160,89,0.6) 50%, transparent);
+}
+
+/* ── Card base ─────────────────────────────────────── */
+.card-mystic {
+  @apply rounded-2xl border border-white/10 bg-black/25 backdrop-blur
+         transition-all duration-300;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+.card-mystic:hover {
+  @apply border-mystic-gold/30 bg-white/[0.03];
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 20px rgba(197,160,89,0.08);
+}
+
+/* ── Shimmer loading placeholder ──────────────────── */
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}

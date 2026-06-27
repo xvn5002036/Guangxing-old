@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>池府王爺 - 新莊武壇廣行宮</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="新莊武壇廣行宮 - 主祀池府王爺。提供線上三柱香、聖誕點燈、問事、補財庫、祭改、祈福法會等服務。結合傳統信仰與現代科技，讓信眾隨時隨地感受神恩。" />
+  <meta name="keywords" content="新莊武壇, 廣行宮, 池府王爺, 線上參拜, 線上點燈, 八字算命, 補財庫, 問事, 祭改, 台北廟宇, 新莊廟宇, 道教信仰" />
+  <meta name="author" content="新莊武壇廣行宮" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.guangxing-temple.com/" />
+  <meta property="og:title" content="池府王爺 - 新莊武壇廣行宮" />
+  <meta property="og:description" content="未到廟宇，心亦可誠。新莊武壇廣行宮提供線上三柱香、點燈祈福、八字算命等服務，護佑您平安順遂。" />
+  <meta property="og:image" content="https://www.guangxing-temple.com/og-image.jpg" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PlaceOfWorship",
+      "name": "新莊武壇廣行宮",
+      "image": [
+        "https://www.guangxing-temple.com/images/temple-hero.jpg"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "新北市新莊區",
+        "addressLocality": "新北市",
+        "postalCode": "242",
+        "addressCountry": "TW"
+      },
+      "url": "https://www.guangxing-temple.com",
+      "description": "主祀池府王爺，提供線上點燈、問事、補財庫等服務。"
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&family=Ma+Shan+Zheng&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    .vertical-rl {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+    }
+
+    .talisman-bg {
+      background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+    }
+
+    .wood-grain {
+      filter: url(#wood-filter);
+    }
+  </style>
+</head>
+
+<body class="bg-mystic-dark text-gray-200 font-serif selection:bg-mystic-gold selection:text-black overflow-x-hidden">
+  <div id="root"></div>
+  <!-- Global SVG Filters for Wood Texture -->
+  <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg"
+    version="1.1">
+    <defs>
+      <filter id="wood-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+        <feDiffuseLighting in="noise" lighting-color="#dcb" surfaceScale="2">
+          <feDistantLight azimuth="45" elevation="60" />
+        </feDiffuseLighting>
+        <feComposite operator="in" in2="SourceGraphic" />
+      </filter>
+    </defs>
+  </svg>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
+</html>
