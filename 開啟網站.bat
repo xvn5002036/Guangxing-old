@@ -1,6 +1,17 @@
 @echo off
+setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0"
 set "LOG_FILE=%~dp0site-start.log"
+set "SITE_URL=http://localhost"
+set "SITE_PORT=80"
+
+net session >nul 2>nul
+if errorlevel 1 (
+  echo This site uses port 80 and needs administrator permission.
+  echo Requesting administrator permission...
+  powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+  exit /b
+)
 
 echo.
 echo ==============================
@@ -12,6 +23,7 @@ echo %cd%
 echo.
 echo Start time: %date% %time% > "%LOG_FILE%"
 echo Project folder: %cd% >> "%LOG_FILE%"
+echo Website URL: %SITE_URL% >> "%LOG_FILE%"
 
 where node >nul 2>nul
 if errorlevel 1 (
@@ -45,36 +57,45 @@ if errorlevel 1 (
   goto error_exit
 )
 
-netstat -ano | findstr ":3000" | findstr "LISTENING" >nul 2>nul
-if not errorlevel 1 (
-  echo.
-  echo Site is already running. Opening browser:
-  echo http://localhost:3000
-  echo Port 3000 already running.>> "%LOG_FILE%"
-  start "" "http://localhost:3000"
-  echo.
-  echo If the page still does not open, close the old black terminal window and run this file again.
-  pause
-  exit /b 0
+echo Checking port %SITE_PORT%...
+for /f "tokens=5" %%P in ('netstat -ano ^| findstr /R /C:":%SITE_PORT% .*LISTENING"') do (
+  if not "%%P"=="0" (
+    echo Closing old process on port %SITE_PORT%: %%P
+    echo Closing old process on port %SITE_PORT%: %%P>> "%LOG_FILE%"
+    taskkill /F /PID %%P >> "%LOG_FILE%" 2>&1
+  )
 )
 
-netstat -ano | findstr ":3001" | findstr "LISTENING" >nul 2>nul
+timeout /t 2 /nobreak >nul
+
+netstat -ano | findstr /R /C:":%SITE_PORT% .*LISTENING" >nul 2>nul
 if not errorlevel 1 (
   echo.
-  echo Port 3001 is already in use, but port 3000 is not running.
-  echo Close old site terminal windows, then run this file again.
-  echo Port 3001 already in use.>> "%LOG_FILE%"
+  echo Port %SITE_PORT% is still in use.
+  echo If Windows shows PID 4 or System, please stop IIS / World Wide Web Publishing Service first.
+  echo Port %SITE_PORT% still in use.>> "%LOG_FILE%"
+  goto error_exit
+)
+
+echo Building website...
+echo Running npm run build...>> "%LOG_FILE%"
+call npm.cmd run build >> "%LOG_FILE%" 2>&1
+if errorlevel 1 (
+  echo Website build failed.
   goto error_exit
 )
 
 echo.
-echo Starting site...
+echo Starting website on port %SITE_PORT%...
 echo Browser will open:
-echo http://localhost:3000
+echo %SITE_URL%
 echo.
-start "" powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 5; Start-Process 'http://localhost:3000'"
-echo Running npm run dev:all...>> "%LOG_FILE%"
-call npm.cmd run dev:all
+start "" powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 3; Start-Process '%SITE_URL%'"
+echo Running node server/server.js on port %SITE_PORT%...>> "%LOG_FILE%"
+set "PORT=%SITE_PORT%"
+set "PUBLIC_BASE_URL=%SITE_URL%"
+set "FRONTEND_BASE_URL=%SITE_URL%"
+node server\server.js
 
 echo.
 echo Site process stopped.

@@ -934,8 +934,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 await supabase.from('notifications').insert([notif]);
 
                 // LINE Notify Integration (Fire and Forget)
-                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const apiBase = isLocal ? 'http://localhost:3001' : ''; // Relative path for Vercel, absolute for local dev
+                const apiBase = '';
 
                 fetch(`${apiBase}/api/line-notify`, {
                     method: 'POST',

@@ -22,9 +22,9 @@ VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-PORT=3001
-PUBLIC_BASE_URL=http://localhost:3001
-FRONTEND_BASE_URL=http://localhost:3001
+PORT=80
+PUBLIC_BASE_URL=http://localhost
+FRONTEND_BASE_URL=http://localhost
 ```
 
 Then run:
@@ -33,7 +33,7 @@ Then run:
 npm run dev:all
 ```
 
-Open `http://localhost:3000` for Vite development. API requests are proxied to `http://localhost:3001`.
+Open `http://localhost` for Vite development. API requests are proxied to `http://localhost`.
 
 For one local production-like server:
 
@@ -41,7 +41,7 @@ For one local production-like server:
 npm run start:local
 ```
 
-Open `http://localhost:3001`.
+Open `http://localhost`.
 
 ## XAMPP / MySQL Mode
 
@@ -58,9 +58,9 @@ MYSQL_PORT=3306
 MYSQL_USER=root
 MYSQL_PASSWORD=
 MYSQL_DATABASE=guangxing
-PORT=3001
-PUBLIC_BASE_URL=http://localhost:3001
-FRONTEND_BASE_URL=http://localhost:3001
+PORT=80
+PUBLIC_BASE_URL=http://localhost
+FRONTEND_BASE_URL=http://localhost
 ```
 
 Then run:
@@ -69,14 +69,14 @@ Then run:
 npm run start:local
 ```
 
-Open `http://localhost:3001`.
+Open `http://localhost`.
 
 ## Diagnostics
 
 Check the active database provider and table connectivity:
 
 ```bash
-curl http://localhost:3001/api/diag
+curl http://localhost/api/diag
 ```
 
 ## Current MySQL Coverage

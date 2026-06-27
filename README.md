@@ -1,111 +1,245 @@
-<div align="center">
-  <img width="1200" height="400" alt="廣行宮數位轉型" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
-  
-  # 新莊武壇廣行宮 | 數位宮廟管理系統
-  
-  **代天巡狩 · 威靈顯赫 | 融合傳統信仰與現代科技的全方位數位轉型解決方案**
-  
-  [![Build Status](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)](https://guangxing.vercel.app)
-  [![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20TS%20%7C%20Supabase-blue?style=for-the-badge)](https://react.dev/)
-  [![AI](https://img.shields.io/badge/AI-Gemini%20Pro-green?style=for-the-badge)](https://deepmind.google/technologies/gemini/)
-</div>
+# 新莊武壇廣行宮網站系統
 
----
+這是一套給宮廟使用的前台網站與後台管理系統。前台提供公告、行事曆、服務項目、線上點燈、活動花絮、數位商城、會員中心與八字命盤；後台可管理網站內容、會員、報名訂單、藏書訂單與各項設定。
 
-## 📖 專案概述
+目前專案以本機 SQLite 資料庫為主，資料庫檔案在 `data/guangxing.sqlite`，已納入專案版本管理，方便整包備份與上傳。
 
-本專案旨在為「新莊武壇廣行宮」建立現代化的數位宮廟平台。不僅提供優雅的前台展示介面，更集成了完善的後台管理系統（CMS），讓宮廟管理者能輕鬆處理日常事務、線上報名及信眾互動，實現宮廟文化的數位傳承。
+## 快速啟動
 
-## ✨ 核心特色
+最簡單的方式：
 
-### 🏟️ 前台沉浸式體驗
-- **互動式視覺效果**：採用高效能的 Canvas 與 CSS 動畫，營造莊嚴神祕的氛圍。
-- **AI 靈籤系統**：整合 Google Gemini AI，提供深度的籤詩解析與生活建議。
-- **線上服務登記**：支援平安燈、光明燈、補財庫等各項服務的線上報名流程。
-- **數位行事曆**：清晰展示宮廟慶典與法會活動。
-- **響應式設計**：完美適配手機、平板與桌機。
-
-### ⚙️ 後台管理系統 (CMS)
-- **視覺化內容編輯**：直接在管理介面修改宮廟沿革、神尊介紹及網站基本設定。
-- **報名資訊管理**：列印收據、狀態追蹤（已辦理/未辦理）及搜尋信眾記錄。
-- **資料即時同步**：整合 Supabase Realtime，編輯內容後前端免重新整理即可更新。
-- **組織與公告管理**：動態更新執事人員、最新消息與常見問題。
-
----
-
-## 🛠️ 技術架構
-
-| 領域 | 技術棧 |
-| :--- | :--- |
-| **前端框架** | React 19 + TypeScript |
-| **建構工具** | Vite 6 |
-| **樣式處理** | CSS3 (Custom Modules) + Tailwind CSS (Partial Utility) |
-| **後端服務** | Supabase (Database, Auth, Storage, Realtime) |
-| **人工智慧** | Google Gemini Generative AI SDK |
-| **圖標庫** | Lucide React |
-
----
-
-## 🚀 快速上手
-
-### 1. 環境需求
-- Node.js (v18+)
-- NPM 或 Yarn
-
-### 2. 安裝步驟
-```bash
-# 複製專案
-git clone <your-repo-url>
-cd Guangxing
-
-# 安裝依賴
-npm install
-
-# 設定環境變數
-# 請參考 .env.example 建立 .env.local 並填入適當的 API Key
-cp .env.example .env.local
+```bat
+開啟網站.bat
 ```
 
-### 3. 開發環境執行
+執行後會自動啟動前台與後台 API，瀏覽器請開：
+
+```text
+http://localhost
+```
+
+如果要手動啟動：
+
+```bash
+npm install
+npm run dev:all
+```
+
+## 常用指令
+
 ```bash
 npm run dev
 ```
 
----
+只啟動前台 Vite。
 
-## ☁️ 部署說明
-
-本專案針對 **Vercel** 進行了優化：
-
-1. 將程式碼推送到 GitHub。
-2. 在 Vercel 建立新專案並連結 GitHub 儲存庫。
-3. **重要：** 在 Vercel 設定中加入以下環境變數：
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-   - `VITE_GEMINI_API_KEY`
-4. 部署完成後，即可享用完整功能。
-
----
-
-## 🗄️ 資料庫架構
-
-資料庫採用 Supabase (PostgreSQL)。若需初始化或遷移資料庫，請參考根目錄下的 `supabase_schema.sql` 檔案。
-
-```sql
--- 主要資料表包括：
--- profiles: 會員資料與權限管理
--- news: 最新消息公告
--- events: 活動行事曆
--- registrations: 線上報名記錄
--- site_settings: 網站全網配置
+```bash
+npm run dev:server
 ```
 
----
+只啟動後端 API。
 
-## 👨‍💻 維護與貢獻
+```bash
+npm run dev:all
+```
 
-如需增加新功能或回報問題，請聯繫系統管理員或提交 Pull Request。
+同時啟動前台與後端。
 
-<div align="center">
-  <p>© 2026 新莊武壇廣行宮. Built with ❤️ and Faith.</p>
-</div>
+```bash
+npm run build
+```
+
+打包正式版網站。
+
+```bash
+npx tsc --noEmit
+```
+
+檢查 TypeScript 是否有錯。
+
+```bash
+npm run db:tool
+```
+
+開啟資料庫設定工具，可選擇 SQLite、MySQL 或 Supabase。
+
+## 專案架構
+
+```text
+src/                 前台與後台 React 程式
+server/              Express API 與資料庫讀寫
+data/                SQLite 資料庫
+uploads/             本機上傳檔案
+tools/               資料庫工具
+public/              靜態資源
+dist/                打包後輸出
+開啟網站.bat          Windows 一鍵開站檔案
+```
+
+## 前台架構
+
+前台目前採用上、中、下三段式：
+
+- 上方：固定導覽列與跑馬燈公告
+- 中央：依照上方導覽載入不同頁面
+- 下方：頁尾資訊
+
+上方導覽不再使用單頁錨點跳轉，而是切換中央內容頁面，畫面較乾淨，也避免跑馬燈公告位置被影響。
+
+主要前台頁面：
+
+- 首頁
+- 最新公告
+- 行事曆
+- 濟世服務
+- 線上點燈
+- 宮廟沿革
+- 活動花絮
+- 數位商城
+- 交通指引
+- 會員中心
+
+## 後台功能
+
+後台可管理：
+
+- 一般設定
+- 最新消息
+- 行事曆管理
+- 服務項目
+- 活動花絮
+- 常見問題
+- 跑馬燈公告
+- 報名管理
+- 道藏藏書管理
+- 道藏收藏訂單
+- 會員管理
+
+資料原則：
+
+- 前台內容優先讀取資料庫。
+- 不使用寫死範例作為主要顯示資料。
+- 後台一般設定會提供初始範例，方便第一次修改。
+- 測試資料應刪除，不應混入正式內容。
+
+## 資料庫
+
+目前主要使用：
+
+```text
+data/guangxing.sqlite
+```
+
+相關檔案：
+
+```text
+sqlite_schema.sql
+supabase_schema.sql
+xampp_mysql_schema.sql
+database.config.json
+```
+
+注意：
+
+- SQLite 是目前本機優先使用的資料庫。
+- `data/guangxing.sqlite` 已加入 Git，可連同網站一起備份或上傳。
+- 如果改用 MySQL 或 Supabase，請先使用 `npm run db:tool` 設定。
+
+## 會員中心
+
+會員中心包含：
+
+- 個人資料
+- 祈福紀錄
+- 我的經文庫
+- 線上安太歲
+- 我的八字命盤
+
+八字命盤使用 `@openfate/bazi-mcp` 產生命盤資料，並顯示：
+
+- 四柱命盤
+- 天干地支
+- 十神
+- 地支藏干
+- 納音
+- 十二長生
+- 空亡
+- 格局判讀
+- 五行能量
+- 十神佔比與解釋
+- 大運
+- 命盤互動
+
+## 上傳檔案
+
+活動花絮與圖片可使用本機或外部網址。
+
+支援概念：
+
+- 本機上傳圖片
+- Facebook、Instagram、YouTube、Google 相簿等外部連結
+- 其他可公開讀取的圖片或影片網址
+
+後台不再使用 GitHub 作為相簿設定方式。
+
+## 開發確認流程
+
+修改程式後建議依序執行：
+
+```bash
+npx tsc --noEmit
+npm run build
+```
+
+兩個都通過後，再重新啟動：
+
+```bash
+npm run dev:all
+```
+
+## Git 與備份
+
+上傳前可檢查目前變更：
+
+```bash
+git status
+```
+
+提交：
+
+```bash
+git add .
+git commit -m "更新網站內容"
+git push
+```
+
+本專案包含資料庫檔案，因此上傳時會包含：
+
+- 網站程式
+- 後台程式
+- 本機 SQLite 資料庫
+- 設定檔
+- 上傳資料夾內已加入版本管理的檔案
+
+## 環境需求
+
+- Windows
+- Node.js 18 以上
+- npm
+
+建議使用 Chrome 開啟：
+
+```text
+http://localhost
+```
+
+## 備註
+
+如果網站開不起來，先確認：
+
+1. 是否已執行 `npm install`
+2. 是否已啟動 `npm run dev:all`
+3. `data/guangxing.sqlite` 是否存在
+4. 瀏覽器是否開啟 `http://localhost`
+
+如果後台資料沒有出現，通常要先檢查資料庫連線與 `database.config.json`。
