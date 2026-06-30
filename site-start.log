@@ -1,0 +1,44 @@
+﻿==================================================
+[2026-07-01 02:17:58] Guangxing site starter
+[2026-07-01 02:17:58] Project folder: C:\Users\YaoWei\Desktop\Guangxing-old
+[2026-07-01 02:17:58] [RUN] 檢查 Node.js
+[2026-07-01 02:17:58] [OK] Node.js 已找到
+[2026-07-01 02:17:58] [RUN] 檢查 npm
+[2026-07-01 02:17:58] [OK] npm 已找到
+[2026-07-01 02:17:58] [OK] 套件已存在，略過安裝
+[2026-07-01 02:17:58] [RUN] 準備 SQLite 資料庫
+[2026-07-01 02:17:58] node tools\db-tool.cjs init-sqlite
+SQLite 已初始化：C:\Users\YaoWei\Desktop\Guangxing-old\data\guangxing.sqlite
+管理員帳號已建立/更新：xvn5002036@gmail.com
+[2026-07-01 02:17:59] [OK] SQLite 資料庫完成
+[2026-07-01 02:17:59] [RUN] 檢查網站埠號 80
+[2026-07-01 02:18:04] [OK] 80 埠可使用
+[2026-07-01 02:18:04] [RUN] 設定 Windows 防火牆
+[2026-07-01 02:18:07] [OK] 防火牆規則已存在
+[2026-07-01 02:18:07] [RUN] 打包網站
+[2026-07-01 02:18:07] npm run build
+
+> guangxing-temple@0.0.0 build
+> vite build
+
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 1983 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m    3.33 kB[22m[1m[22m[2m │ gzip:   1.68 kB[22m
+[2mdist/[22m[35massets/index-DXUK_c5G.css  [39m[1m[2m   95.97 kB[22m[1m[22m[2m │ gzip:  14.62 kB[22m
+[2mdist/[22m[36massets/index-DiS5-nzZ.js   [39m[1m[33m1,378.78 kB[39m[22m[2m │ gzip: 405.89 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 17.11s[39m
+[2026-07-01 02:18:26] [OK] 網站打包完成
+[2026-07-01 02:18:26] [RUN] 取得連線網址
+[2026-07-01 02:18:27] [OK] 網址資訊取得完成
+[2026-07-01 02:18:27] [RUN] 啟動網站服務
+[2026-07-01 02:18:27] [OK] 網站服務視窗已開啟
+[2026-07-01 02:18:27] [RUN] 等待服務完成啟動
+[2026-07-01 02:18:31] [OK] 網站服務啟動完成
